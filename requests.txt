@@ -1,0 +1,4 @@
+post(
+    "localhost:3000/survey/add",
+    json={"name": "chingu", "age": 19, "phone": "0251 123456", "address": "Somewhere on earth LOREM IPSUM LOREM IPSUM", "state": "Maharashtra", "pincode": "421004", "whatsapp_number": "+911234567890", "dream": "LOREAM"}
+)

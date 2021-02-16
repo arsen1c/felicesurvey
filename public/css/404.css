@@ -1,0 +1,11 @@
+.not-found {
+	font-size: 3rem;
+	text-align: center;
+}
+
+@media (max-width: 576px) {
+	.not-found {
+		font-size: 2rem;
+		text-align: center;
+	}
+}
