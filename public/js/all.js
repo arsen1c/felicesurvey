@@ -16,17 +16,19 @@ showMore.forEach((showMoreBtn) => {
 deleteBtn.forEach((deleteButton) => {
 	deleteButton.addEventListener("click", async (e) => {
 		const baseURL = `/delete/survey/id/${deleteButton.getAttribute('data-id')}`;
+		// Prompt
+		const allowDelete = confirm("Do you really want to delete?");
 		// console.log(deleteButton.getAttribute('data-id'));
-		const data = await fetch(baseURL, { method: 'DELETE' });
-		const da = await data.text();
-		if (data.status === 200) {
-			window.location.reload();
-			showToast(da);
-		} else {
-			showToast("ERROR OCCURRED");
-		}
-		
-		console.log(da);
+		if (allowDelete) {
+			const data = await fetch(baseURL, { method: 'DELETE' });
+			const da = await data.text();
+			if (data.status === 200) {
+				window.location.reload();
+				showToast(da);
+			} else {
+				showToast("ERROR OCCURRED");
+			}
+		}		
 	});
 });
 

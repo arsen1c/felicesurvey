@@ -13,10 +13,11 @@
 
 body {
     position: relative;
-    font-family: 'Poppins', sans-serif;
+    /*font-family: 'Poppins', sans-serif;*/
     font-size: 1.6rem;
     line-height: 1.4;
     margin: 0;
+    color: #4d4d4d;
     /*background: linear-gradient(145deg,#fff,#f3f3f3);*/
     background: #fff;
 }
@@ -85,6 +86,7 @@ header {
     display: grid;
     padding: 4.5rem;
     grid-template-columns: 1fr 1fr;   
+    color: #404040;
 }
 
 .column-header {

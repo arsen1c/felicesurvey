@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,10 +16,10 @@ app.use(bodyParser.json());
 // MySQL config
 const pool = mysql.createPool({
 	connectionLimit: 10,
-	host: 'localhost',
-	user: 'root',
-	password: 'arsenic',
-	database: 'felice_survey'
+	host            : process.env.DB_HOST,
+    user            : process.env.DB_USER,
+    password        : process.env.DB_PASS,
+    database        : 'KjHD8PZlFk'
 });
 
 // Root
