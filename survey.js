@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 // MySQL config
 const pool = mysql.createPool({
 	connectionLimit: 10,
-	host            : process.env.DB_HOST,
-    user            : process.env.DB_USER,
-    password        : process.env.DB_PASS,
-    database        : 'KjHD8PZlFk'
+	host            : process.env.DB_HOST_LOCAL,
+    user            : process.env.DB_USER_LOCAL,
+    password        : process.env.DB_PASS_LOCAL,
+    database        : process.env.DB_LOCAL
 });
 
 // Root
@@ -38,7 +38,6 @@ app.get('/survey/all', (req, res) => {
 				connection.release() // return the connection to the pool
 				// rows.forEach(survey => console.log(survey));
 				if (!err) {
-					// data = JSON.stringify(rows)
 					res.render('all', { data: rows });
 				} else {
 					console.log(err);
@@ -65,7 +64,7 @@ app.get('/survey/id/:id', (req, res) => {
 				connection.release();
 
 				if (!err) {
-					res.send(rows);
+					res.render('single', { survey: rows });
 				} else {
 					console.log("ERROR GETTING SURVERY BY ID: ", err);
 				}
@@ -87,8 +86,12 @@ app.post('/survey/add', (req, res) => {
 		if (err) throw err;
 		console.log(`connected as id ${connection.threadId}`);
 
+		const date = new Date();
 		const params = req.body;
+		params.created_at = date;
+		console.log(params);
 		console.log("PARAMS:", params);
+		// Adding data into the DB
 		connection.query('INSERT INTO surveys SET ?', params, (err, rows) => {
 			connection.release();
 

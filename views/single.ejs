@@ -1,0 +1,82 @@
+<html>
+	<%- include('./partials/head.ejs') %>
+
+<style>
+	body {
+		font-family: "Poppins", sans-serif;
+		background: #fcfaff;
+	}
+
+	.details {
+		max-width: 900px;
+		box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+		border-radius: 18px;
+		margin: 5rem auto 0 auto;
+		padding: 2rem;
+		font-size: 1.5rem;
+		color: #707070;
+		background: #fff;
+	}
+	.title {
+		margin-right: 0.5rem;
+		font-weight: bold;
+	}
+	.backArrow {
+		position: relative;
+		bottom: 1.5px;
+	}
+	.back {
+		padding: 0.7rem;
+		font-size: 1rem;
+		border: none;
+		background: #cdb3fc;
+		cursor: pointer;
+		box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+		border-radius: 5px;
+		color: #fff;
+	}
+
+	@media (max-width: 570px) {
+		.details {
+			margin: 1px 0 1px 0;
+			font-size: 1.3rem;
+			padding: 10px;
+			padding-top: 12px;
+			min-height: 89vh;
+
+		}
+	}
+</style>
+<body>
+	<div class="single-main">
+		<% if (survey) { %>
+			<div class="details">
+				<button class="back"><span class="backArrow">«</span>Back</button>
+				<% survey.forEach(surveyDetail => { %>
+					<p class="name"><span class="title">Name:</span> <%= surveyDetail.name %></p>
+					<p class="age"><span class="title">Age:</span> <%= surveyDetail.age %></p>
+					<p class="phone"><span class="title">Phone:</span> <%= surveyDetail.phone %></p>
+					<p class="address"><span class="title">Address:</span> <%= surveyDetail.address %></p>
+					<p class="state"><span class="title">State:</span> <%= surveyDetail.state %></p>
+					<p class="pincode"><span class="title">Pincode:</span> <%= surveyDetail.pincode %></p>
+					<p class="whatsapp_number"><span class="title">Whatsapp Number:</span> <%= surveyDetail.whatsapp_number %></p>
+					<p class="dream"><span class="title">Dream:</span> <%= surveyDetail.dream %></p>
+				<% }); %>
+			</div>
+		<% } else { %>
+			<div class="details">Nothing Found</div>
+		<% }  %>
+	</div>
+
+	<script>
+		const backBtn = document.querySelector('.back');
+
+		backBtn.addEventListener('click', () => {
+			const backLocation = `${document.domain}:3000/survey/all?admin=true`;
+			// console.log(backLocation);
+			window.location = "/survey/all?admin=true";
+		})
+	</script>
+
+</body>
+</html>

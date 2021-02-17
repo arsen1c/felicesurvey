@@ -2,3 +2,4 @@ node_modules/
 app.js
 requests.txt
 .env
+package-lock.json
