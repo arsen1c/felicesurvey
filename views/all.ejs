@@ -100,7 +100,7 @@
 						<button class="delete" data-id=<%= survey.id %>><i class="fas fa-trash-alt "></i></button>
 					</div>
 					<div class="date">
-						<span><%= new Date(survey.created_at).toString().split("GMT")[0] || 'Tue Feb 16 2021 22:00:00' %></span>
+						<span><%= new Date(survey.created_at).toDateString().split("GMT")[0] %></span>
 					</div>
 				</div>
 			<% }) %>
